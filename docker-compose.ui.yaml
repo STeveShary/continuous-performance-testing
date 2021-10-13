@@ -1,0 +1,9 @@
+version: '3.0'
+
+services:
+  continuous-test-server:
+    image: continuous-test-server:latest
+  locust-ui:
+    image: locust-ui:latest
+    ports:
+      - "8089:8089"

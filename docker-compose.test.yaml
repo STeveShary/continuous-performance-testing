@@ -1,0 +1,9 @@
+version: '3.0'
+
+services:
+  continuous-test-server:
+    image: continuous-test-server:latest
+  locust-test:
+    image: locust-test:latest
+    depends_on:
+      - continuous-test-server
