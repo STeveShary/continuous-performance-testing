@@ -8,11 +8,11 @@ from continuous_performance_testing.tests.base_performance_test import BasePerfo
 from continuous_performance_testing.tests.runner import ExampleUser
 
 
-class TestCapitalApiPerformance(BasePerformanceTest):
+class TestExampleUserPerformance(BasePerformanceTest):
     """
     Class for API Performance Test
     """
-    NUM_USERS = 100  # This will give us ~5 invoice checks per second.
+    NUM_USERS = 200  # This will give us ~160 fast calls per second.
     TEST_DURATION_IN_SECONDS = 120  # 2 minutes
 
     def test_should_get_capital_invoices_and_checkout(self):
@@ -33,14 +33,14 @@ class TestCapitalApiPerformance(BasePerformanceTest):
         stats = env.runner.stats.serialize_stats()
         self.assert_route_performance(route="/fast",
                                       stats=stats,
-                                      min_avg_call_rate=100,
+                                      min_avg_call_rate=125,
                                       max_error_rate=0.00001,
                                       max_avg_latency=7,
                                       max_90th_latency=10,
                                       max_95th_latency=15)
         self.assert_route_performance(route="/slow",
                                       stats=stats,
-                                      min_avg_call_rate=2,
+                                      min_avg_call_rate=2.5,
                                       max_error_rate=0.00001,
                                       max_avg_latency=805,
                                       max_90th_latency=810,
