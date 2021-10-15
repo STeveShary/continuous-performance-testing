@@ -15,7 +15,11 @@ class TestExampleUserPerformance(BasePerformanceTest):
     NUM_USERS = 200  # This will give us ~160 fast calls per second.
     TEST_DURATION_IN_SECONDS = 120  # 2 minutes
 
-    def test_should_get_capital_invoices_and_checkout(self):
+    def test_should_get_fast_and_slow_repsonses(self):
+        """
+        An example test that calls the slow and fast test and should properly assert on the
+        latency, error, and call rate of each endpoint.\
+        """
         # setup Environment and Runner
         host = os.environ.get('API_URL', 'http://continuous-test-server:5000')
 
